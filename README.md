@@ -112,3 +112,6 @@ on Gateway :
 ```
 sudo iptables -t nat -A POSTROUTING ! -d 10.242.0.0/24 -o enp0s8 -j MASQUERADE
 ```
+
+
+© Irene KAEWKLIN, Charles COSTE, Aymeric GIRAULT
