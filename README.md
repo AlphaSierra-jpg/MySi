@@ -29,13 +29,7 @@ change networks settings at: `Settings` -> `Network` -> `adapter 1`
 in the menu of `<Attached to>` choose `<Host-only Adaptater>` and below choose your networks name if it's not already set
 For gate way add a second adapter and set `<Bridged Adapter>` in `<Attached to>` menu's
 
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
-
 ## Step 2: server congifgurations
-
-//pharse d'arrpche
 
 **2.1 : create your servers**
 
@@ -61,9 +55,10 @@ set fix ip:
 sudo nano /etc/network/interfaces
 ```
 
-**<interface>** = interface connect to host only
+Definition:
+>`<interface>` = interface connect to host only
 
-**<interface2>** = interface connect to briged
+>`<interface2>` = interface connect to briged
 
 on GateWay add:
 
@@ -97,11 +92,16 @@ on gateway active ip forwarding.
 
 edit **sudo nano /etc/sysctl.conf**
 Add the following lines to the bottom of the file
-`net.ipv4.ip_forward = 1`
+```
+net.ipv4.ip_forward = 1
+```
 
-`sysctl -p` to active the change without restart
+Run the following command to active the change without restart:
+```
+sysctl -p
+```
 
-if you want to check ipforwarding this commande below and must be return 1 :
+if you want to check if ipforwarding works type this commande below and must be return 1 :
 
 ```
 cat /proc/sys/net/ipv4/ip_forward
@@ -112,6 +112,8 @@ on Gateway :
 ```
 sudo iptables -t nat -A POSTROUTING ! -d 10.242.0.0/24 -o enp0s8 -j MASQUERADE
 ```
+This command enables the NAT network functionality on the gateway
+
 
 
 © Irene KAEWKLIN, Charles COSTE, Aymeric GIRAULT
